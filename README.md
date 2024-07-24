@@ -48,8 +48,9 @@ To compile:
 	Update spec file to:
 
 
-'''
+```c
 # -*- mode: python ; coding: utf-8 -*-
+
 
 block_cipher = None
 
@@ -93,7 +94,8 @@ coll = COLLECT(
     upx_exclude=[],
     name='audio_to_text',
 )
-'''
+```
+
 
 6. Build the Executable with PyInstaller
 	
