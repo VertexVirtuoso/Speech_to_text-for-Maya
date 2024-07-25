@@ -27,6 +27,7 @@ To compile:
 
 4. Create the Directory Structure
 
+```c
 	/my_project
     |-- audio_to_text.py
     |-- ffmpeg/
@@ -38,6 +39,7 @@ To compile:
             |-- speech_recognition/
             |-- pydub/
             |-- ...
+```
 
 5. Create and Update the PyInstaller Spec File
 
