@@ -1,4 +1,3 @@
-# File: audio_to_text_main.py
 import subprocess
 import maya.cmds as cmds
 import os
@@ -39,7 +38,7 @@ def call_audio_to_text_executable(audio_file_path):
         print(f"Standard Output:\n{e.stdout}")
         print(f"Standard Error:\n{e.stderr}")
 
-def main():
-    audio_file_path = get_maya_audio()
-    if audio_file_path:
-        call_audio_to_text_executable(audio_file_path)
+# Example usage
+audio_file_path = get_maya_audio()
+if audio_file_path:
+    call_audio_to_text_executable(audio_file_path)

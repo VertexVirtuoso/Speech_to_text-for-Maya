@@ -104,3 +104,6 @@ coll = COLLECT(
 	Run PyInstaller with the spec file to build the executable:
 
 		pyinstaller audio_to_text.spec
+
+
+7. The main.py file is the one needed to run the compiled executable in maya, assuming all the dependencies are in the maya scripts folder
