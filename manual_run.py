@@ -38,11 +38,7 @@ def call_audio_to_text_executable(audio_file_path):
         print(f"Standard Output:\n{e.stdout}")
         print(f"Standard Error:\n{e.stderr}")
 
-def run():
-    # Entry point for the script
-    audio_file_path = get_maya_audio()
-    if audio_file_path:
-        call_audio_to_text_executable(audio_file_path)
-
-if __name__ == "__main__":
-    run()
+# Example usage
+audio_file_path = get_maya_audio()
+if audio_file_path:
+    call_audio_to_text_executable(audio_file_path)
