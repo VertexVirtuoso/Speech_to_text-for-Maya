@@ -43,7 +43,7 @@ def install_scripts_and_shelf(script_dir):
     current_shelf = cmds.tabLayout("ShelfLayout", q=True, selectTab=True)
 
     try:
-        cmds.shelfButton(parent=current_shelf, label="Audio to Text", image="your_icon_image.png",
+        cmds.shelfButton(parent=current_shelf, label="Audio to Text", image="speech_to_text_dark.png",
                          command='import audio_to_text.main; audio_to_text.main.run()', sourceType="python")
     except Exception as e:
         print(f"Error creating 'Audio to Text' shelf button: {e}")
