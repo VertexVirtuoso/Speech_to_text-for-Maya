@@ -53,13 +53,27 @@ To compile:
 ```c
 # -*- mode: python ; coding: utf-8 -*-
 
-
+import sys
+import os
 block_cipher = None
+
+if sys.platform == 'win32':
+    binaries = [
+        ('ffmpeg/ffmpeg.exe', 'ffmpeg'),
+        ('ffmpeg/ffplay.exe', 'ffmpeg'),
+        ('ffmpeg/ffprobe.exe', 'ffmpeg')
+    ]
+else:
+    binaries = [
+        ('ffmpeg/ffmpeg', 'ffmpeg'),
+        ('ffmpeg/ffplay', 'ffmpeg'),
+        ('ffmpeg/ffprobe', 'ffmpeg')
+    ]
 
 a = Analysis(
     ['audio_to_text.py'],
     pathex=['/path/to/my_project'],
-    binaries=[('ffmpeg/ffmpeg.exe', 'ffmpeg'), ('ffmpeg/ffplay.exe', 'ffmpeg'), ('ffmpeg/ffprobe.exe', 'ffmpeg')],
+    binaries=binaries,
     datas=[('other_dependencies/site-packages', 'site-packages')],
     hiddenimports=['pydub', 'speech_recognition'],
     hookspath=[],
@@ -69,6 +83,7 @@ a = Analysis(
     win_private_assemblies=False,
     cipher=block_cipher,
 )
+
 pyz = PYZ(a.pure, a.zipped_data, cipher=block_cipher)
 
 exe = EXE(
@@ -96,6 +111,7 @@ coll = COLLECT(
     upx_exclude=[],
     name='audio_to_text',
 )
+
 ```
 
 
