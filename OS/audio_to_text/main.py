@@ -33,16 +33,33 @@ def call_audio_to_text_executable(audio_file_path):
         print("Standard Output:\n", result.stdout)
         if result.stderr:
             print("Standard Error:\n", result.stderr)
+        return result.stdout, result.stderr
     except subprocess.CalledProcessError as e:
         print(f"Subprocess failed with return code {e.returncode}")
         print(f"Standard Output:\n{e.stdout}")
         print(f"Standard Error:\n{e.stderr}")
+        return e.stdout, e.stderr
+
+def show_result_in_ui(result_text):
+    # Create a simple UI to display the result text
+    if cmds.window("resultWindow", exists=True):
+        cmds.deleteUI("resultWindow")
+    
+    window = cmds.window("resultWindow", title="Audio to Text Result", widthHeight=(400, 300))
+    cmds.columnLayout(adjustableColumn=True)
+    cmds.scrollField(editable=False, wordWrap=True, text=result_text, height=250)
+    cmds.button(label="Close", command=lambda *args: cmds.deleteUI(window, window=True))
+    cmds.showWindow(window)
 
 def run():
     # Entry point for the script
     audio_file_path = get_maya_audio()
     if audio_file_path:
-        call_audio_to_text_executable(audio_file_path)
+        stdout, stderr = call_audio_to_text_executable(audio_file_path)
+        if stdout:
+            show_result_in_ui(stdout)
+        else:
+            show_result_in_ui("Error: No output from the executable.\n" + stderr)
 
 if __name__ == "__main__":
     run()
