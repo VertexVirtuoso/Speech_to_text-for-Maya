@@ -8,8 +8,8 @@ global proc installDeleteScripts() {
     // Construct the Python command to call the install function
     string $pythonCommand = "import sys, os; " +
                             "sys.path.append(r'" + $scriptDir + "'); " +
-                            "import install_script; " +
-                            "install_script.install_scripts_and_shelf(r'" + $scriptDir + "')";
+                            "import install_audio_to_text; " +
+                            "install_audio_to_text.install_scripts_and_shelf(r'" + $scriptDir + "')";
 
     // Print the Python command for debugging
     print ("Python Command: " + $pythonCommand + "\n");
