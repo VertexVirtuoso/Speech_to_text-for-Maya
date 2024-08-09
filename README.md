@@ -1,5 +1,5 @@
 # audio_to_text-for-Maya
- A speech recognition tool for Maya, it writes on the command line what it's said in the scene's audio
+ A speech recognition tool for Maya, it writes on the command line and in a custom pop up window what it's said in the scene's audio
 
 
 To compile:
